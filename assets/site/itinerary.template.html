@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#123f34">
+  <title>__PAGE_TITLE__ · 完整攻略</title>
+  <style>
+    :root {
+      --ink: #193229;
+      --muted: #65736c;
+      --green: #0c5b48;
+      --paper: #f5f2e9;
+      --line: #d9ded8;
+      --white: #fff;
+      --gold: #9a6b1b;
+      --shadow: 0 14px 42px rgba(22,45,36,.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    img { max-width: 100%; }
+    .topbar {
+      position: sticky;
+      z-index: 50;
+      top: 0;
+      min-height: 60px;
+      padding: 9px max(14px, env(safe-area-inset-left)) 9px max(14px, env(safe-area-inset-right));
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      background: rgba(13,73,59,.96);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(14px);
+    }
+    .brand { width: 39px; height: 39px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.24); border-radius: 12px; font-size: 19px; }
+    .top-title { min-width: 0; }
+    .top-title strong, .top-title span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .top-title strong { font-size: 14px; }
+    .top-title span { margin-top: 2px; color: rgba(255,255,255,.72); font-size: 8px; }
+    .map-link { min-height: 38px; margin-left: auto; padding: 0 12px; display: grid; place-items: center; flex: 0 0 auto; border: 1px solid rgba(255,255,255,.25); border-radius: 11px; color: #fff; font-size: 10px; font-weight: 850; text-decoration: none; }
+    main { width: min(1040px, calc(100% - 28px)); margin: 0 auto; padding: 28px 0 56px; }
+    .hero {
+      padding: clamp(22px, 5vw, 46px);
+      border-radius: 24px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(255,255,255,.13), transparent 28%),
+        linear-gradient(135deg, #0d493b, #123f34 58%, #183c33);
+      box-shadow: var(--shadow);
+    }
+    .eyebrow { margin: 0 0 8px; color: #cce4da; font-size: 9px; font-weight: 900; letter-spacing: .15em; text-transform: uppercase; }
+    .hero h1 { max-width: 760px; margin: 0; font-size: clamp(26px, 5vw, 48px); line-height: 1.08; }
+    .hero-copy { max-width: 740px; margin: 13px 0 0; color: rgba(255,255,255,.76); font-size: 12px; line-height: 1.7; }
+    .hero-facts { margin-top: 22px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+    .hero-fact { min-width: 0; padding: 11px 12px; border: 1px solid rgba(255,255,255,.16); border-radius: 13px; background: rgba(255,255,255,.08); }
+    .hero-fact span { display: block; color: rgba(255,255,255,.63); font-size: 8px; }
+    .hero-fact strong { display: block; margin-top: 4px; overflow: hidden; font-size: 10px; line-height: 1.45; text-overflow: ellipsis; white-space: nowrap; }
+    .quick-nav { margin: 15px 0 0; padding: 11px; display: flex; gap: 7px; overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.74); scrollbar-width: none; }
+    .quick-nav::-webkit-scrollbar { display: none; }
+    .quick-nav a { min-width: 47px; height: 37px; padding: 0 11px; display: grid; place-items: center; flex: 0 0 auto; border: 1px solid var(--line); border-radius: 10px; color: #46584f; background: #fff; font-size: 9px; font-weight: 900; text-decoration: none; }
+    .section-heading { margin: 30px 0 12px; display: flex; align-items: end; justify-content: space-between; gap: 12px; }
+    .section-heading h2 { margin: 0; font-size: 20px; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 10px; }
+    .booking-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .booking-card { padding: 14px; border: 1px solid #edcf94; border-radius: 14px; background: #fff5db; }
+    .booking-card strong, .booking-card span { display: block; }
+    .booking-card strong { color: #6f4c14; font-size: 12px; }
+    .booking-card span { margin-top: 5px; color: #805d26; font-size: 10px; line-height: 1.55; }
+    .booking-card a { display: inline-block; margin-top: 8px; color: #6f4c14; font-size: 9px; font-weight: 850; text-decoration: none; }
+    .empty { padding: 15px; border: 1px solid var(--line); border-radius: 14px; color: var(--muted); background: #fff; font-size: 11px; }
+    .day {
+      margin-top: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.84);
+      box-shadow: 0 8px 28px rgba(24,51,42,.07);
+      scroll-margin-top: 76px;
+    }
+    .day-head { padding: 17px 18px; display: flex; align-items: flex-start; gap: 13px; border-bottom: 1px solid var(--line); }
+    .day-code { width: 45px; height: 45px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 13px; color: #fff; font-size: 11px; font-weight: 900; }
+    .day-title { min-width: 0; }
+    .day-title p { margin: 0 0 4px; color: var(--muted); font-size: 9px; font-weight: 800; }
+    .day-title h3 { margin: 0; font-size: 17px; line-height: 1.35; }
+    .day-body { padding: 17px 18px 20px; }
+    .summary { margin: 0; color: #52625a; font-size: 11px; line-height: 1.75; }
+    .metrics { margin-top: 13px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .metric { min-width: 0; padding: 10px 11px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+    .metric span, .metric strong { display: block; }
+    .metric span { color: var(--muted); font-size: 8px; }
+    .metric strong { margin-top: 4px; font-size: 10px; line-height: 1.45; }
+    .label { margin: 18px 0 8px; color: #42564d; font-size: 10px; font-weight: 900; }
+    .schedule { display: grid; gap: 7px; }
+    .schedule-row { padding: 10px 11px; display: grid; grid-template-columns: minmax(78px, 105px) 1fr; gap: 10px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+    .schedule-time { color: var(--green); font-size: 9px; font-weight: 900; line-height: 1.5; }
+    .schedule-copy strong, .schedule-copy span { display: block; }
+    .schedule-copy strong { font-size: 10px; line-height: 1.45; }
+    .schedule-copy span { margin-top: 3px; color: var(--muted); font-size: 9px; line-height: 1.55; }
+    .stops { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
+    .stop-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    .stop-image { width: 100%; aspect-ratio: 16/8; display: block; object-fit: cover; background: #dfe8e2; }
+    .stop-content { padding: 11px 12px 12px; }
+    .stop-top { display: flex; align-items: flex-start; gap: 8px; }
+    .stop-emoji { width: 31px; height: 31px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 10px; background: #edf5f0; font-size: 16px; }
+    .stop-title { min-width: 0; }
+    .stop-title strong, .stop-title span { display: block; }
+    .stop-title strong { font-size: 11px; line-height: 1.4; }
+    .stop-title span { margin-top: 2px; overflow: hidden; color: var(--muted); font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+    .stop-note { margin: 8px 0 0; color: #5b6962; font-size: 9px; line-height: 1.6; }
+    .flags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
+    .flag { padding: 4px 7px; border-radius: 999px; color: #43574e; background: #edf5f0; font-size: 8px; font-weight: 800; }
+    .flag.ticket { color: #754f12; background: #fff0c8; }
+    .flag.optional { color: #665b48; background: #f0ece4; }
+    .stop-links { margin-top: 9px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .stop-links a, .sources a { color: var(--green); font-size: 8px; font-weight: 850; text-decoration: none; }
+    .risk { margin-top: 14px; padding: 11px 12px; border: 1px solid #d0ded6; border-radius: 12px; color: #425a4f; background: #eef5f1; font-size: 9px; line-height: 1.6; }
+    .sources { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 7px; }
+    .sources a { padding: 6px 8px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+    .footer { margin-top: 25px; padding: 15px; border-radius: 14px; color: #6e6b62; background: #ebe8df; font-size: 9px; line-height: 1.65; }
+    @media (max-width: 760px) {
+      main { width: min(100% - 24px, 680px); padding-top: 16px; }
+      .hero { padding: 23px 18px; border-radius: 19px; }
+      .hero h1 { font-size: 28px; }
+      .hero-facts { grid-template-columns: 1fr 1fr; }
+      .booking-list, .stops { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+    }
+    @media print {
+      .topbar, .quick-nav { display: none; }
+      body { background: #fff; }
+      main { width: 100%; padding: 0; }
+      .hero, .day { box-shadow: none; break-inside: avoid; }
+      .day { break-inside: avoid-page; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" aria-hidden="true">📖</div>
+    <div class="top-title"><strong id="topTitle"></strong><span>完整文字版 · Complete itinerary</span></div>
+    <a class="map-link" href="./index.html">地图版 →</a>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Complete family travel guide</p>
+      <h1 id="heroTitle"></h1>
+      <p class="hero-copy" id="heroCopy"></p>
+      <div class="hero-facts" id="heroFacts"></div>
+    </section>
+    <nav class="quick-nav" id="quickNav" aria-label="跳转到每天"></nav>
+    <section>
+      <div class="section-heading">
+        <h2>🎟️ 提前预订清单</h2>
+        <p>最终班次、价格和取消政策以官方页面为准</p>
+      </div>
+      <div class="booking-list" id="bookingList"></div>
+    </section>
+    <section>
+      <div class="section-heading">
+        <h2>逐日完整行程</h2>
+        <p>中英文地点 · 时间表 · 距离 · 兜底方案</p>
+      </div>
+      <div id="days"></div>
+    </section>
+    <div class="footer">
+      路线距离、开放时间、天气、道路、船班和活动可能变化。临近出发时重新查看官方通知与当天导航；长途驾驶以驾驶员实际疲劳程度为准，不为了完成景点牺牲安全。
+    </div>
+  </main>
+  <script>
+    const trip = __ITINERARY_DATA__;
+    const esc = (value = "") => String(value).replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[char]);
+    const formatKm = (value) => Number.isFinite(value) ? `${Math.round(value).toLocaleString()} km` : "—";
+    const mapsUrl = (stop) => `https://www.google.com/maps/search/?api=1&query=${stop.lat},${stop.lng}`;
+    const bookings = trip.days.flatMap((day) => day.stops
+      .filter((stop) => stop.bookable)
+      .map((stop) => ({ ...stop, dayId: day.id, date: day.date })));
+
+    document.getElementById("topTitle").textContent = trip.title;
+    document.getElementById("heroTitle").textContent = trip.title;
+    document.getElementById("heroCopy").textContent = `${trip.subtitle || ""} ${trip.travelWindow} · ${trip.travelers}`.trim();
+    document.getElementById("heroFacts").innerHTML = `
+      <div class="hero-fact"><span>旅行日期</span><strong>${esc(trip.travelWindow)}</strong></div>
+      <div class="hero-fact"><span>旅行强度</span><strong>${esc(trip.pace)}</strong></div>
+      <div class="hero-fact"><span>总距离</span><strong>${formatKm(trip.totalDistanceKm)}</strong></div>
+      <div class="hero-fact"><span>固定时间</span><strong>${esc((trip.fixedWindows || []).join(" · ") || "—")}</strong></div>`;
+    document.getElementById("quickNav").innerHTML =
+      trip.days.map((day) => `<a href="#${esc(day.id)}">${esc(day.id)}</a>`).join("");
+    document.getElementById("bookingList").innerHTML = bookings.length
+      ? bookings.map((stop) => `
+          <article class="booking-card">
+            <strong>${esc(stop.emoji || "🎟️")} ${esc(stop.name)} · ${esc(stop.en)}</strong>
+            <span>${esc(stop.dayId)} · ${esc(stop.date)}<br>${esc(stop.bookingNote || "需提前预订或确认")}</span>
+            <a href="${esc(stop.bookingUrl)}" target="_blank" rel="noreferrer">官方预订 / Booking ↗</a>
+          </article>`).join("")
+      : '<div class="empty">当前路线没有标记必须提前预订的活动。</div>';
+
+    document.getElementById("days").innerHTML = trip.days.map((day) => `
+      <article class="day" id="${esc(day.id)}">
+        <header class="day-head">
+          <div class="day-code" style="background:${day.color}">${esc(day.id)}</div>
+          <div class="day-title"><p>${esc(day.date)} · ${esc(day.theme || "")}</p><h3>${esc(day.title)}</h3></div>
+        </header>
+        <div class="day-body">
+          <p class="summary">${esc(day.summary)}</p>
+          <div class="metrics">
+            <div class="metric"><span>当天距离</span><strong>${formatKm(day.distanceKm)}</strong></div>
+            <div class="metric"><span>交通时间</span><strong>${esc(day.travelTime || "—")}</strong></div>
+            <div class="metric"><span>固定休息</span><strong>${esc(day.napPlan || "按体力安排")}</strong></div>
+            <div class="metric"><span>住宿</span><strong>${esc(day.stay || "—")}</strong></div>
+          </div>
+          ${(day.schedule || []).length ? `
+            <p class="label">建议时间表</p>
+            <div class="schedule">${day.schedule.map((item) => `
+              <div class="schedule-row">
+                <div class="schedule-time">${esc(item.time)}</div>
+                <div class="schedule-copy"><strong>${esc(item.title)}</strong>${item.note ? `<span>${esc(item.note)}</span>` : ""}</div>
+              </div>`).join("")}</div>` : ""}
+          <p class="label">地点说明</p>
+          <div class="stops">${day.stops.map((stop) => `
+            <article class="stop-card">
+              ${stop.image ? `<img class="stop-image" src="${esc(stop.image)}" alt="${esc(stop.imageAlt || stop.name)}" loading="lazy">` : ""}
+              <div class="stop-content">
+                <div class="stop-top">
+                  <div class="stop-emoji">${esc(stop.emoji || (stop.bookable ? "🎟️" : "📍"))}</div>
+                  <div class="stop-title"><strong>${esc(stop.name)}</strong><span>${esc(stop.en)}</span></div>
+                </div>
+                ${stop.note ? `<p class="stop-note">${esc(stop.note)}</p>` : ""}
+                <div class="flags">
+                  ${stop.travelFromPrevious ? `<span class="flag">${esc(stop.travelFromPrevious)}${Number.isFinite(stop.distanceFromPreviousKm) ? ` · ${formatKm(stop.distanceFromPreviousKm)}` : ""}</span>` : ""}
+                  ${stop.bookable ? '<span class="flag ticket">🎟️ 提前预订</span>' : ""}
+                  ${stop.optional ? '<span class="flag optional">可按状态删除</span>' : ""}
+                </div>
+                <div class="stop-links">
+                  <a href="${mapsUrl(stop)}" target="_blank" rel="noreferrer">Google Maps ↗</a>
+                  ${stop.bookingUrl ? `<a href="${esc(stop.bookingUrl)}" target="_blank" rel="noreferrer">预订 ↗</a>` : ""}
+                  ${stop.sourceUrl ? `<a href="${esc(stop.sourceUrl)}" target="_blank" rel="noreferrer">官方说明 ↗</a>` : ""}
+                </div>
+              </div>
+            </article>`).join("")}</div>
+          ${day.risk ? `<div class="risk"><strong>调整与兜底：</strong>${esc(day.risk)}</div>` : ""}
+          ${(day.sources || []).length ? `<div class="sources">${day.sources.map((source) => `<a href="${esc(source.url)}" target="_blank" rel="noreferrer">${esc(source.label)} ↗</a>`).join("")}</div>` : ""}
+        </div>
+      </article>`).join("");
+  </script>
+</body>
+</html>

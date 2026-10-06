@@ -1,0 +1,171 @@
+{
+  "title": "海湾亲子 3 日慢旅行",
+  "subtitle": "Family Bay Escape",
+  "language": "zh-CN",
+  "travelWindow": "2026-10-01—2026-10-03",
+  "travelers": "2 adults + one 2-year-old",
+  "pace": "Relaxed",
+  "arrival": "10月1日 09:00 · Central Station",
+  "departure": "10月3日 18:00 · Central Station",
+  "fixedWindows": [
+    "13:00–14:00 宝宝午睡"
+  ],
+  "totalDistanceKm": 96,
+  "days": [
+    {
+      "id": "D1",
+      "date": "10月1日 · 周四",
+      "title": "抵达 · 河岸慢启动",
+      "theme": "落地恢复",
+      "color": "#F97316",
+      "summary": "抵达后只安排河岸散步和酒店休息。",
+      "distanceKm": 18,
+      "travelTime": "约 40 分钟",
+      "stay": "Bay City Centre",
+      "napPlan": "13:00–14:00 酒店午睡",
+      "risk": "若抵达延误，删除河岸散步。",
+      "stops": [
+        {
+          "name": "中央车站",
+          "en": "Central Station",
+          "lat": -31.952,
+          "lng": 115.86,
+          "distanceFromPreviousKm": 0,
+          "note": "抵达与取车。"
+        },
+        {
+          "name": "城市河岸",
+          "en": "City Foreshore",
+          "lat": -31.969,
+          "lng": 115.855,
+          "emoji": "🌇",
+          "highlight": true,
+          "distanceFromPreviousKm": 8,
+          "travelFromPrevious": "约 15 分钟",
+          "note": "草坪放风和早午餐。"
+        }
+      ],
+      "schedule": [
+        {
+          "time": "09:00–11:30",
+          "title": "抵达、取车与早午餐 / Arrival",
+          "note": "预留行李和儿童座椅时间。"
+        },
+        {
+          "time": "13:00–14:00",
+          "title": "酒店午睡 / Hotel Nap",
+          "note": "不安排固定门票。"
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "D2",
+      "date": "10月2日 · 周五",
+      "title": "观鲸 · 海湾景观",
+      "theme": "核心活动",
+      "color": "#0EA5E9",
+      "summary": "上午观鲸，下午酒店恢复。",
+      "distanceKm": 42,
+      "travelTime": "约 1 小时",
+      "stay": "Bay City Centre",
+      "napPlan": "13:00–14:00 酒店午睡",
+      "risk": "天气取消时改为海事博物馆。",
+      "stops": [
+        {
+          "name": "海湾码头",
+          "en": "Bay Marina",
+          "lat": -32.02,
+          "lng": 115.75,
+          "emoji": "🐋",
+          "highlight": true,
+          "bookable": true,
+          "bookingNote": "提前预订并在前一天确认天气。",
+          "bookingUrl": "https://example.com/book",
+          "distanceFromPreviousKm": 20,
+          "travelFromPrevious": "约 30 分钟",
+          "note": "提前 30 分钟抵达。"
+        },
+        {
+          "name": "白沙湾",
+          "en": "White Sand Bay",
+          "lat": -32.04,
+          "lng": 115.7,
+          "emoji": "🏖️",
+          "highlight": true,
+          "optional": true,
+          "distanceFromPreviousKm": 12,
+          "travelFromPrevious": "约 20 分钟",
+          "note": "仅在观鲸准时返航且宝宝状态好时前往。"
+        }
+      ],
+      "schedule": [
+        {
+          "time": "08:30–12:00",
+          "title": "观鲸 / Whale Watching",
+          "note": "含登船缓冲。"
+        },
+        {
+          "time": "13:00–14:00",
+          "title": "酒店午睡 / Hotel Nap",
+          "note": "返航后先午餐。"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Official whale operator",
+          "url": "https://example.com/"
+        }
+      ]
+    },
+    {
+      "id": "D3",
+      "date": "10月3日 · 周六",
+      "title": "公园慢游 · 从容返程",
+      "theme": "离开日",
+      "color": "#22C55E",
+      "summary": "上午公园，午睡后前往车站。",
+      "distanceKm": 36,
+      "travelTime": "约 50 分钟",
+      "stay": "Departure",
+      "napPlan": "13:00–14:00 酒店或推车午睡",
+      "risk": "最晚 15:30 前往车站。",
+      "stops": [
+        {
+          "name": "海湾公园",
+          "en": "Bay Park",
+          "lat": -31.98,
+          "lng": 115.82,
+          "emoji": "🌳",
+          "highlight": true,
+          "distanceFromPreviousKm": 16,
+          "travelFromPrevious": "约 25 分钟",
+          "note": "草坪与游乐区。"
+        },
+        {
+          "name": "中央车站",
+          "en": "Central Station",
+          "lat": -31.952,
+          "lng": 115.86,
+          "distanceFromPreviousKm": 20,
+          "travelFromPrevious": "约 25 分钟",
+          "note": "预留还车与候车时间。"
+        }
+      ],
+      "schedule": [
+        {
+          "time": "09:00–11:30",
+          "title": "公园 / Park",
+          "note": "随时可缩短。"
+        },
+        {
+          "time": "15:30",
+          "title": "前往车站 / Depart for Station",
+          "note": "保留充足缓冲。"
+        }
+      ],
+      "sources": []
+    }
+  ],
+  "sources": []
+}
